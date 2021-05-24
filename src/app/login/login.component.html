@@ -1,0 +1,32 @@
+<div class="col-md-6 offset-md-3 mt-5">
+  <div class="alert alert-info">
+    app_id: 4072bf6e<br />
+    app_key: de2fe5fe6bbb4efd3c1fb078a80e8838
+  </div>
+    <div class="card">
+        <h4 class="card-header">Login Example</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="app_id">app_id</label>
+                    <input type="text" formControlName="app_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.app_id.errors }" />
+                    <div *ngIf="submitted && f.app_id.errors" class="invalid-feedback">
+                        <div *ngIf="f.app_id.errors.required">app_id is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="app_key">app_key</label>
+                    <input type="text" formControlName="app_key" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.app_key.errors }" />
+                    <div *ngIf="submitted && f.app_key.errors" class="invalid-feedback">
+                        <div *ngIf="f.app_key.errors.required">app_key is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>

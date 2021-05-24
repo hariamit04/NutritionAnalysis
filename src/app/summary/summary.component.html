@@ -1,0 +1,113 @@
+<h1 id="tableLabel">Ingredient Summary</h1>
+
+<p *ngIf="!ingredients"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="ingredients">
+  <thead>
+    <tr>
+      <th> Quantity</th>
+      <th> Unit</th>
+      <th> Food</th>
+      <th> Calories</th>
+      <th> Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ingredient of ingredients">
+      <td>{{ ingredient.Quantity }}</td>
+      <td>{{ ingredient.Unit }}</td>
+      <td>{{ ingredient.Name }}</td>
+      <td>{{ ingredient.Calories }}</td>
+      <td>{{ ingredient.Weight }}</td>
+    </tr>
+  </tbody>
+</table>
+<button [disabled]="!ingredients" class="btn btn-primary" (click)="total()">
+  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+  Total Nutrition
+</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="totalIngredient">
+  <thead>
+    <tr>
+      <th>
+        Calories
+      </th>
+      <td>
+        {{totalIngredient.Calories}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Fat
+      </th>
+      <td>
+        {{totalIngredient.Fat}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Cholesterol
+      </th>
+      <td>
+        {{totalIngredient.Cholesterol}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Sodium
+      </th>
+      <td>
+        {{totalIngredient.Sodium}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Carbohydrate (Fiber, Sugar)
+      </th>
+      <td>
+        {{totalIngredient.Carbohydrate}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Protein
+      </th>
+      <td>
+        {{totalIngredient.Protein}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Vitamin
+      </th>
+      <td>
+        {{totalIngredient.Vitamin}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Calcium
+      </th>
+      <td>
+        {{totalIngredient.Calcium}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Iron
+      </th>
+      <td>
+        {{totalIngredient.Iron}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Potassium
+      </th>
+      <td>{{totalIngredient.Potassium}}</td>
+    </tr>
+  </thead>
+</table>
+<div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+  {{error}}
+</div>

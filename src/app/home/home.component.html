@@ -1,0 +1,29 @@
+<div class="card mt-4">
+  <h4 class="card-header">You're logged in with Angular 8 & JWT!!</h4>
+  <div class="card-body">
+    <h6>Users from secure api end point</h6>
+    <!--<div *ngIf="loading" class="spinner-border spinner-border-sm"></div>-->
+    <ul *ngIf="users">
+      <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
+    </ul>
+    <form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="ingredientsValue">Ingredient Text</label>
+        <textarea type="text" formControlName="ingredientsValue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ingredientsValue.errors }"
+                  (keyup)="ingredientsValueKeyup($event.target.value)"></textarea>
+        <div *ngIf="submitted && f.ingredientsValue.errors" class="invalid-feedback">
+          <div *ngIf="f.ingredientsValue.errors.required">Ingredient Text is required</div>
+        </div>
+      </div>
+      <button [disabled]="!enableAnalyseButton" class="btn btn-primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Analyse
+      </button>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+        {{error}}
+        <br />
+        Format ex. : - Food name | Quantity | Unit
+      </div>
+    </form>
+  </div>
+</div>
